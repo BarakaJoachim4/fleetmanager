@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleet Manager</title>
+  <link rel="icon" type="image/png" href="img/fav.jpg">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    .form-control:focus {
+      border-color: #FB9A58;
+      box-shadow: 0 0 0 0.2rem rgba(251, 154, 88, 0.25);
+    }
+
+    .btn-orange {
+      background-color: #FB9A58;
+      color: white;
+    }
+
+    .btn-orange:hover {
+      background-color: #e68a46;
+      color: white;
+    }
+
+    .border-orange {
+      border: 1px solid #FB9A58;
+    }
+
+    .text-gray {
+      color: #43425D;
+    }
+  </style>
+</head>
+
+<body class="bg-white d-flex align-items-center justify-content-center min-vh-100 p-4">
+
+  <div class="container max-w-1000 rounded overflow-hidden shadow-sm">
+    <div class="row g-0 bg-white rounded">
+
+      <!-- Left image -->
+      <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center p-4">
+        <div class="rounded overflow-hidden w-100" style="height: 500px;">
+          <img src="img/group.png" alt="Illustration" class="img-fluid h-100 w-100 object-fit-cover">
+        </div>
+      </div>
+
+      <!-- Login Form -->
+      <div class="col-12 col-md-6 p-5">
+        <div class="d-flex flex-column align-items-center h-100">
+          <img src="img/fleet.png" alt="Logo" class="mb-4" style="width: 200px; height: 80px;" />
+          <p class="text-gray text-center mb-4 small">Bienvenue! Veuillez vous connecter à votre compte.</p>
+
+          <form id="loginForm" class="w-100" style="max-width: 400px;">
+            <div class="mb-3">
+              <input type="text" name="username" class="form-control border-bottom" placeholder="Nom d'utilisateur" required>
+            </div>
+
+            <div class="mb-3 position-relative">
+              <input type="password" name="password" id="password" class="form-control border-bottom" placeholder="Mot de passe" required>
+              <button type="button" onclick="togglePassword('password', this)" class="btn position-absolute end-0 top-0 mt-1 me-2 p-1 text-orange">
+                <span class="material-icons">visibility</span>
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center small text-gray mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember">
+                <label class="form-check-label" for="remember">
+                  Se souvenir de moi
+                </label>
+              </div>
+              <a href="reset-password.html" class="text-decoration-none">Mot de passe oublié ?</a>
+            </div>
+
+            <div class="d-flex justify-content-between pt-3">
+              <button type="submit" class="btn btn-orange fw-semibold px-4">
+                Se connecter
+              </button>
+              <a href="register.html" class="btn border-orange text-gray fw-semibold px-4">
+                Créer un compte
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    });
+
+    function togglePassword(id, btn) {
+      const input = document.getElementById(id);
+      const icon = btn.querySelector('.material-icons');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+  </script>
+
+</body>
+
+</html>

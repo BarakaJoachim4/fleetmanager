@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fleet Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/fav.jpg">
+
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+    .sidebar-icon {
+      font-size: 18px;
+      color: #A5A4BF;
+    }
+    .sidebar-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: #A5A4BF;
+    }
+    .sidebar-active {
+      font-weight: 600;
+      color: white;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-[#363350] flex flex-col">
+      <div class="w-full flex items-center justify-center py-6 bg-black/10">
+        <a href="index.html">
+          <img src="img/fleet2.png" alt="Fleet Manager Logo" class="h-13">
+        </a>
+      </div>
+      <nav class="space-y-2 py-4">
+        <a href="index.html" class="sidebar-link">
+          <span class="material-icons sidebar-icon">home</span>
+          <span class="sidebar-text sidebar-active">Home</span>
+        </a>
+        <a href="#dashboard" class="sidebar-link">
+          <span class="material-icons sidebar-icon">dashboard</span>
+          <span class="sidebar-text ">Dashboard</span>
+        </a>
+        <a href="reservation.html" class="sidebar-link">
+          <span class="material-icons sidebar-icon">menu_book</span>
+          <span class="sidebar-text">Réservations</span>
+        </a>
+        <a href="vehicule.html" class="sidebar-link">
+          <span class="material-icons sidebar-icon">directions_car</span>
+          <span class="sidebar-text">Véhicules</span>
+        </a>
+        <a href="client.html" class="sidebar-link">
+          <span class="material-icons sidebar-icon">groups</span>
+          <span class="sidebar-text">Clients</span>
+        </a>
+        <a href="chauffeur.html" class="sidebar-link">
+          <span class="material-icons sidebar-icon">person</span>
+          <span class="sidebar-text">Chauffeur</span>
+        </a>
+        <a href="#contrats" class="sidebar-link">
+          <span class="material-icons sidebar-icon">description</span>
+          <span class="sidebar-text">Contrats</span>
+        </a>
+        <a href="#facturation" class="sidebar-link">
+          <span class="material-icons sidebar-icon">request_quote</span>
+          <span class="sidebar-text">Facturation</span>
+        </a>
+        <a href="#localisation" class="sidebar-link">
+          <span class="material-icons sidebar-icon">map</span>
+          <span class="sidebar-text">Localisation</span>
+        </a>
+        <a href="#rapports" class="sidebar-link">
+          <span class="material-icons sidebar-icon">insert_drive_file</span>
+          <span class="sidebar-text">Rapports</span>
+        </a>
+        <a href="#logout" class="sidebar-link mt-auto">
+          <span class="material-icons sidebar-icon">logout</span>
+          <span class="sidebar-text">Déconnexion</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto">
+      <!-- En-tête pleine largeur -->
+      <div class="w-full bg-[#FFF8EB] py-10 px-20 flex flex-col md:flex-row justify-between items-center rounded-b-xl shadow-sm">
+        <div class="text-center md:text-left mb-7 md:mb-15">
+          <h1 class="text-center[38px] md:text-[48px] font-bold text-gray-800 leading-tight">
+            Bienvenue sur votre
+          </h1>
+          <h1 class="text-center[38px] md:text-[48px] font-bold text-gray-800 leading-tight">
+            tableau de bord
+          </h1>
+        </div>
+        <div>
+            <button class="bg-[#2F2E41] text-white flex items-center gap-2 px-6 py-3 rounded-lg hover:bg-[#1f1f2f] transition-all duration-300">
+              <span class="material-icons">picture_as_pdf</span> Générer le rapport
+            </button>
+        </div>
+      </div>
+
+      <!-- Section Graphiques -->
+      <div class="bg-white py-12 px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Carte Véhicules -->
+          <div class="bg-white rounded-xl p-4 shadow-md">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Total Véhicules : 100</h2>
+            <canvas id="vehiculesChart" class="w-full h-40"></canvas>
+          </div>
+
+          <!-- Carte Contrats -->
+          <div class="bg-white rounded-xl p-4 shadow-md">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Total Contrats : 100</h2>
+            <canvas id="contratsChart" class="w-full h-40"></canvas>
+          </div>
+
+          <!-- Carte Clients -->
+          <div class="bg-white rounded-xl p-4 shadow-md">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Total Clients : 120</h2>
+            <canvas id="clientsChart" class="w-full h-40"></canvas>
+          </div>
+
+          <!-- Carte Paiements -->
+          <div class="bg-white rounded-xl p-4 shadow-md">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Paiements</h2>
+            <canvas id="paiementsChart" class="w-full h-40"></canvas>
+          </div>
+
+          <!-- Carte Synthèse Générale - Occupant 2 colonnes -->
+          <div class="bg-white rounded-xl p-6 shadow-md md:col-span-2">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Situation Générale</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700 text-sm">
+              
+              <div class="bg-gray-50 p-4 rounded-md shadow-inner flex items-center gap-3">
+                <span class="material-icons text-green-600 text-xl">directions_car</span>
+                <p><strong>Taux d’occupation :</strong> 72%</p>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-md shadow-inner flex items-center gap-3">
+                <span class="material-icons text-blue-600 text-xl">attach_money</span>
+                <p><strong>Revenus collectés ce mois :</strong> 14 500 USD</p>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-md shadow-inner flex items-center gap-3">
+                <span class="material-icons text-red-500 text-xl">location_on</span>
+                <p><strong>Alertes géographiques :</strong> 2 véhicules hors zone</p>
+              </div>
+              
+              <div class="bg-gray-50 p-4 rounded-md shadow-inner flex items-center gap-3">
+                <span class="material-icons text-yellow-500 text-xl">warning</span>
+                <p><strong>Contrats en retard :</strong> 4</p>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ChartJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    new Chart(document.getElementById("vehiculesChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Total", "Disponible", "Occupé"],
+        datasets: [{
+          label: "Véhicules",
+          data: [100, 65, 35],
+          backgroundColor: ["#F59E0B", "#10B981", "#EF4444"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: {
+            display: true,
+            text: "Total Véhicules : 100"
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("contratsChart"), {
+      type: "pie",
+      data: {
+        labels: ["En attente", "En cours", "Clôturés"],
+        datasets: [{
+          label: "Contrats",
+          data: [20, 70, 10],
+          backgroundColor: ["#3B82F6", "#6EE7B7"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: {
+            display: true,
+            text: "Total Contrats : 100"
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("clientsChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Particuliers", "Entreprises"],
+        datasets: [{
+          label: "Répartition des Clients",
+          data: [75, 45],
+          backgroundColor: ["#34D399", "#60A5FA"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: {
+            display: true,
+            text: "Total clients : 120"
+          }
+        }
+      }
+    });
+
+  new Chart(document.getElementById("paiementsChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Avances", "Soldés"],
+      datasets: [{
+        label: "Paiements",
+        data: [35, 65],
+        backgroundColor: ["#FB923C", "#22C55E"]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "bottom" },
+        title: {
+          display: true,
+          text: "Statut des paiements"
+        }
+      }
+    }
+  });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fleet Manager-Dashboard</title>
+  <link rel="icon" type="image/png" href="img/fav.jpg">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts + Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+    .sidebar {
+      width: 260px;
+      background-color: #363350;
+      flex-shrink: 0;
+    }
+    .sidebar-icon {
+      font-size: 18px;
+      color: #A5A4BF;
+    }
+    .sidebar-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: #A5A4BF;
+    }
+    .sidebar-active {
+      font-weight: 600;
+      color: white;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.5rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .bg-custom-header {
+      background-color: #FFF8EB;
+    }
+    .btn-report {
+      background-color: #2F2E41;
+      color: white;
+    }
+    .btn-report:hover {
+      background-color: #1f1f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="d-flex vh-100 overflow-hidden">
+    <!-- Sidebar -->
+  <aside class="d-none d-md-flex flex-column sidebar p-3" style="width: 260px;">
+    <div class="text-center py-4">
+      <a href="dashboard.html">
+        <img src="img/fleet2.png" alt="Fleet Manager Logo" class="img-fluid" style="height: 56px;" />
+      </a>
+    </div>
+    <nav class="d-flex flex-column flex-grow-1 gap-2">
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">home</span>
+        <span class="sidebar-text">Home</span>
+      </a>
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">dashboard</span>
+        <span class="sidebar-text sidebar-active">Dashboard</span>
+      </a>
+      <a href="reservation.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">menu_book</span>
+        <span class="sidebar-text">Réservations</span>
+      </a>
+      <a href="vehicule.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">directions_car</span>
+        <span class="sidebar-text">Véhicules</span>
+      </a>
+      <a href="client.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">groups</span>
+        <span class="sidebar-text">Clients</span>
+      </a>
+      <a href="chauffeur.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">person</span>
+        <span class="sidebar-text">Chauffeur</span>
+      </a>
+      <a href="#contrats" class="sidebar-link">
+        <span class="material-icons sidebar-icon">description</span>
+        <span class="sidebar-text">Contrats</span>
+      </a>
+      <a href="#facturation" class="sidebar-link">
+        <span class="material-icons sidebar-icon">request_quote</span>
+        <span class="sidebar-text">Facturation</span>
+      </a>
+      <a href="#localisation" class="sidebar-link">
+        <span class="material-icons sidebar-icon">map</span>
+        <span class="sidebar-text">Localisation</span>
+      </a>
+      <a href="#rapports" class="sidebar-link">
+        <span class="material-icons sidebar-icon">insert_drive_file</span>
+        <span class="sidebar-text">Rapports</span>
+      </a>
+      <a href="#logout" class="sidebar-link mt-auto">
+        <span class="material-icons sidebar-icon">logout</span>
+        <span class="sidebar-text">Déconnexion</span>
+      </a>
+    </nav>
+  </aside>
+
+    <!-- Main content -->
+    <main class="flex-grow-1 overflow-auto">
+      <div class="bg-custom-header p-5 rounded-bottom shadow-sm d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="mb-4 mb-md-0 text-center text-md-start">
+          <h1 class="fw-bold text-dark">Bienvenue sur votre</h1>
+          <h1 class="fw-bold text-dark">tableau de bord</h1>
+        </div>
+        <button class="btn btn-report d-flex align-items-center gap-2 px-4 py-2 rounded">
+          <span class="material-icons">picture_as_pdf</span> Générer le rapport
+        </button>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="bg-white py-4 px-3">
+        <div class="row g-4">
+
+          <!-- Carte Véhicules -->
+          <div class="col-md-4">
+            <div class="bg-white rounded p-3 shadow-sm">
+              <h2 class="fs-5 fw-semibold text-secondary mb-2">Total Véhicules : 100</h2>
+              <canvas id="vehiculesChart" height="160"></canvas>
+            </div>
+          </div>
+
+          <!-- Carte Contrats -->
+          <div class="col-md-4">
+            <div class="bg-white rounded p-3 shadow-sm">
+              <h2 class="fs-5 fw-semibold text-secondary mb-2">Total Contrats : 100</h2>
+              <canvas id="contratsChart" height="160"></canvas>
+            </div>
+          </div>
+
+          <!-- Carte Clients -->
+          <div class="col-md-4">
+            <div class="bg-white rounded p-3 shadow-sm">
+              <h2 class="fs-5 fw-semibold text-secondary mb-2">Total Clients : 120</h2>
+              <canvas id="clientsChart" height="160"></canvas>
+            </div>
+          </div>
+
+          <!-- Carte Paiements -->
+          <div class="col-md-4">
+            <div class="bg-white rounded p-3 shadow-sm">
+              <h2 class="fs-5 fw-semibold text-secondary mb-2">Paiements</h2>
+              <canvas id="paiementsChart" height="160"></canvas>
+            </div>
+          </div>
+
+          <!-- Carte Synthèse Générale -->
+          <div class="col-md-8">
+            <div class="bg-white rounded p-4 shadow-sm">
+              <h2 class="fs-4 fw-bold text-dark mb-3">Situation Générale</h2>
+              <div class="row g-3 text-secondary small">
+
+                <div class="col-md-6">
+                  <div class="bg-light p-3 rounded d-flex align-items-center gap-2 shadow-sm">
+                    <span class="material-icons text-success">directions_car</span>
+                    <p class="mb-0"><strong>Taux d’occupation :</strong> 72%</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bg-light p-3 rounded d-flex align-items-center gap-2 shadow-sm">
+                    <span class="material-icons text-primary">attach_money</span>
+                    <p class="mb-0"><strong>Revenus collectés ce mois :</strong> 14 500 USD</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bg-light p-3 rounded d-flex align-items-center gap-2 shadow-sm">
+                    <span class="material-icons text-danger">location_on</span>
+                    <p class="mb-0"><strong>Alertes géographiques :</strong> 2 véhicules hors zone</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="bg-light p-3 rounded d-flex align-items-center gap-2 shadow-sm">
+                    <span class="material-icons text-warning">warning</span>
+                    <p class="mb-0"><strong>Contrats en retard :</strong> 4</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    new Chart(document.getElementById("vehiculesChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Total", "Disponible", "Occupé"],
+        datasets: [{
+          label: "Véhicules",
+          data: [100, 65, 35],
+          backgroundColor: ["#F59E0B", "#10B981", "#EF4444"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: { display: true, text: "Total Véhicules : 100" }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("contratsChart"), {
+      type: "pie",
+      data: {
+        labels: ["En attente", "En cours", "Clôturés"],
+        datasets: [{
+          label: "Contrats",
+          data: [20, 70, 10],
+          backgroundColor: ["#3B82F6", "#6EE7B7"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: { display: true, text: "Total Contrats : 100" }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("clientsChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Particuliers", "Entreprises"],
+        datasets: [{
+          label: "Répartition des Clients",
+          data: [75, 45],
+          backgroundColor: ["#34D399", "#60A5FA"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: { display: true, text: "Total clients : 120" }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("paiementsChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Avances", "Soldés"],
+        datasets: [{
+          label: "Paiements",
+          data: [35, 65],
+          backgroundColor: ["#FB923C", "#22C55E"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "bottom" },
+          title: { display: true, text: "Statut des paiements" }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

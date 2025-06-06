@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fleet Manager-Vehicule-add</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts & Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="img/fav.jpg">
+
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+    }
+    .sidebar {
+      background-color: #363350;
+      color: #A5A4BF;
+    }
+    .sidebar-icon {
+      font-size: 18px;
+      color: #A5A4BF;
+    }
+    .sidebar-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: #A5A4BF;
+    }
+    .sidebar-active {
+      font-weight: 600;
+      color: white;
+    }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .drag-over {
+      background-color: #fef3c7;
+      border-color: #f59e0b;
+    }
+    .custom-btn {
+      background-color: #FB9A58;
+      color: white;
+    }
+    .custom-btn:hover {
+      background-color: #f2873b;
+    }
+    .min-h {
+      min-height: 100%;
+    }
+    .header-orange {
+      background-color: #FFF8EB;
+      color: rgb(0, 0, 0);
+    }
+
+  </style>
+</head>
+
+<body class="d-flex vh-100 bg-white">
+  <!-- Sidebar -->
+  <aside class="d-none d-md-flex flex-column sidebar p-3" style="width: 260px;">
+    <div class="text-center py-4">
+      <a href="dashboard.html">
+        <img src="img/fleet2.png" alt="Fleet Manager Logo" class="img-fluid" style="height: 56px;" />
+      </a>
+    </div>
+    <nav class="d-flex flex-column flex-grow-1 gap-2">
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">home</span>
+        <span class="sidebar-text">Home</span>
+      </a>
+      <a href="dashboard.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">dashboard</span>
+        <span class="sidebar-text">Dashboard</span>
+      </a>
+      <a href="reservation.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">menu_book</span>
+        <span class="sidebar-text">Réservations</span>
+      </a>
+      <a href="vehicule.html" class="sidebar-link ">
+        <span class="material-icons sidebar-icon">directions_car</span>
+        <span class="sidebar-text ">Véhicules</span>
+      </a>
+      <a href="client.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">groups</span>
+        <span class="sidebar-text">Clients</span>
+      </a>
+      <a href="chauffeur.html" class="sidebar-link bg-custom-black-10">
+        <span class="material-icons sidebar-icon">person</span>
+        <span class="sidebar-text sidebar-active">Chauffeur</span>
+      </a>
+      <a href="contrat.html" class="sidebar-link">
+        <span class="material-icons sidebar-icon">description</span>
+        <span class="sidebar-text">Contrats</span>
+      </a>
+      <a href="#facturation" class="sidebar-link">
+        <span class="material-icons sidebar-icon">request_quote</span>
+        <span class="sidebar-text">Facturation</span>
+      </a>
+      <a href="#localisation" class="sidebar-link">
+        <span class="material-icons sidebar-icon">map</span>
+        <span class="sidebar-text">Localisation</span>
+      </a>
+      <a href="#rapports" class="sidebar-link">
+        <span class="material-icons sidebar-icon">insert_drive_file</span>
+        <span class="sidebar-text">Rapports</span>
+      </a>
+      <a href="#logout" class="sidebar-link mt-auto">
+        <span class="material-icons sidebar-icon">logout</span>
+        <span class="sidebar-text">Déconnexion</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow-1 p-4 overflow-auto">
+    <!-- Header -->
+     <div class="d-flex justify-content-end align-items-center mb-4">
+        <div class="d-flex align-items-center gap-2">
+          <img src="img/IMG-3.jpg" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;" alt="User">
+          <div>
+            <p class="mb-0 small fw-semibold">Baraka J.</p>
+            <p class="mb-0 text-muted small">baraka@gmail.com</p>
+          </div>
+        </div>
+      </div>
+      
+     <div class="header-orange fs-3 fw-bold p-3 rounded shadow d-flex align-items-center gap-2 mb-4">
+      <span class="material-icons align-middle">person</span>Nouveau Chauffeur
+     </div>
+
+    <!-- Content Grid -->
+    <div class="row g-4 align-items-stretch">
+      <!-- Drag & Drop -->
+      <div class="col-md-6">
+        <div id="dropzone" class="border border-2 border-dashed rounded text-center p-5 h-100 d-flex flex-column justify-content-center align-items-center">
+          <span class="material-icons text-secondary" style="font-size: 60px;">cloud_upload</span>
+          <p class="fs-5 fw-semibold mt-3">Drag & Drop</p>
+          <p class="text-muted small">
+            vos fichiers ou <span id="browseBtn" class="text-primary text-decoration-underline" role="button">parcourir</span>
+          </p>
+          <input type="file" id="fileInput" class="d-none" accept="image/*,application/pdf" />
+          <p id="fileName" class="mt-2 text-muted small"></p>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div class="col-md-6">
+        <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off" id="vehicleForm" class="h-100 d-flex flex-column justify-content-between">
+          <div class="mb-3">
+            <label for="matricule" class="form-label">Matricule</label>
+            <input type="text" id="matricule" name="matricule_chauf" class="form-control" placeholder="Entrez le numéro matricule" required>
+          </div>
+          <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" id="nom_chauf" name="nom_chauf" class="form-control" placeholder="Entrez le nom" required>
+          </div>
+          <div class="mb-3">
+            <label for="telephone" class="form-label">Téléphone</label>
+            <input type="text" id="telephone" name="telephone_chauf" class="form-control" placeholder="Entrez le numéro de teléphone" required>
+          </div>
+          <div class="mb-3">
+            <label for="num_chassis" class="form-label">PERMIS DE CONDUIRE</label>
+            <input type="text" id="permis" name="permis_chauf" class="form-control" placeholder="Entrez le numéro du permis" required>
+          </div>
+          <div class="mb-3">
+            <label for="cartenat" class="form-label">NN CARTE NATIONALE</label>
+            <input type="text" id="carte" name="carte_chauf" class="form-control" placeholder="Entrez la carte" required>
+          </div>
+
+          <div class="d-flex justify-content-center gap-3 mt-4">
+                <button type="reset" class="btn btn-dark w-100 d-flex align-items-center justify-content-center">Annuler</button>
+                <button type="submit" class="btn custom-btn w-100 d-flex align-items-center justify-content-center">
+                    <span class="material-icons me-2">save</span> Enregistrer
+                </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script drag & drop -->
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const browseBtn = document.getElementById('browseBtn');
+    const fileNameDisplay = document.getElementById('fileName');
+
+    browseBtn.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', () => {
+      fileNameDisplay.textContent = fileInput.files.length > 0 ? `Fichier sélectionné : ${fileInput.files[0].name}` : '';
+    });
+
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('drag-over');
+    });
+
+    dropzone.addEventListener('dragleave', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('drag-over');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        fileNameDisplay.textContent = `Fichier sélectionné : ${e.dataTransfer.files[0].name}`;
+      }
+    });
+
+    window.addEventListener("dragover", e => e.preventDefault());
+    window.addEventListener("drop", e => e.preventDefault());
+  </script>
+</body>
+</html>
