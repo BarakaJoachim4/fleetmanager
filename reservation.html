@@ -111,11 +111,11 @@
           <span class="material-icons sidebar-icon">description</span>
           <span class="sidebar-text">Contrats</span>
         </a>
-        <a href="#facturation" class="sidebar-link">
+        <a href="facturation.html" class="sidebar-link">
           <span class="material-icons sidebar-icon">request_quote</span>
           <span class="sidebar-text">Facturation</span>
         </a>
-        <a href="#localisation" class="sidebar-link">
+        <a href="localisation.html" class="sidebar-link">
           <span class="material-icons sidebar-icon">map</span>
           <span class="sidebar-text">Localisation</span>
         </a>
@@ -161,27 +161,22 @@
         </div>
       </div>
 
-     <!-- Rapport de suivi -->
-      <div class="p-4">
-        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-1">
-
-        <!-- Partie gauche : champs et boutons -->
-        <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center">
-
-          <!-- Rapport du -->
-          <div class="d-flex align-items-center gap-1" style="width: 400px;">
-            <label for="dateDebut" class="form-label mb-0" style="min-width: 90px;">Rapport du</label>
-            <input type="date" id="dateDebut" class="form-control" style="flex-grow: 1; height: 40px;">
+    <!-- Rapport de suivi -->
+      <div class="p-4 bg-white rounded shadow-sm mb-4">
+        <form class="row g-3 align-items-end">
+          <!-- Date de début -->
+          <div class="col-md-3">
+            <label for="dateDebut" class="form-label">Rapport Du</label>
+            <input type="date" id="dateDebut" class="form-control" placeholder="Date de début">
           </div>
 
-          <!-- Rapport au -->
-          <div class="d-flex align-items-center gap-2" style="width: 400px;">
-            <label for="dateFin" class="form-label mb-0" style="min-width: 50px;">au</label>
-            <input type="date" id="dateFin" class="form-control" style="flex-grow: 1; height: 40px;">
+          <!-- Date de fin -->
+          <div class="col-md-3">
+            <label for="dateFin" class="form-label">Rapport Au</label>
+            <input type="date" id="dateFin" class="form-control" placeholder="Date de fin">
           </div>
 
-          <!-- Sélecteur de véhicule -->
-          <div class="d-flex align-items-center gap-2" style="width: 400px;">
+          <div class="col-md-3">
             <label for="selectVehicule" class="form-label mb-0" style="min-width: 90px;">Véhicule</label>
             <select id="selectVehicule" class="form-select" style="flex-grow: 1; height: 40px;">
               <option value="">Tous les véhicules réservés</option>
@@ -189,25 +184,16 @@
               <option value="vehicule2">Véhicule 2</option>
             </select>
           </div>
-        </div>
 
+          <!-- Bouton -->
+          <div class="col-md-3 d-grid">
+            <button type="submit" class="btn text-white fw-semibold" style="height: 40px; background-color: #FB9A58;">
+              <span class="material-icons align-middle me-1">bar_chart</span>
+              Générer le rapport
+            </button>
+          </div>  
 
-            <!-- Bouton Générer -->
-            <div style="width: 400px;">
-              <button class="btn text-white w-100 d-flex justify-content-center align-items-center" 
-                      style="background-color: #FB9A58; height: 40px; font-weight: 600; font-size: 1rem;">
-                Générer le rapport
-              </button>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-
-
-
+    
 
       <!-- Table des clients -->
       <div class="table-responsive bg-white rounded shadow-sm">

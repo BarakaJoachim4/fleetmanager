@@ -84,9 +84,9 @@
         <span class="material-icons sidebar-icon">dashboard</span>
         <span class="sidebar-text">Dashboard</span>
       </a>
-      <a href="reservation.html" class="sidebar-link bg-custom-black-10" >
+      <a href="reservation.html" class="sidebar-link " >
         <span class="material-icons sidebar-icon">menu_book</span>
-        <span class="sidebar-text sidebar-active">Réservations</span>
+        <span class="sidebar-text ">Réservations</span>
       </a>
       <a href="vehicule.html" class="sidebar-link">
         <span class="material-icons sidebar-icon">directions_car</span>
@@ -100,9 +100,9 @@
         <span class="material-icons sidebar-icon">person</span>
         <span class="sidebar-text">Chauffeur</span>
       </a>
-      <a href="contrat.html" class="sidebar-link">
+      <a href="contrat.html" class="sidebar-link bg-custom-black-10">
         <span class="material-icons sidebar-icon">description</span>
-        <span class="sidebar-text">Contrats</span>
+        <span class="sidebar-text sidebar-active">Contrats</span>
       </a>
       <a href="facturation.html" class="sidebar-link">
         <span class="material-icons sidebar-icon">request_quote</span>
@@ -138,53 +138,58 @@
       </div>
       
      <div class="header-orange fs-3 fw-bold p-3 rounded shadow d-flex align-items-center gap-2 mb-4">
-      <span class="material-icons align-middle" >menu_book</span>Nouvelle Réservation
+      <span class="material-icons align-middle" >assignment_add</span>Nouveau Contrat
      </div>
 
     <!-- Formulaire Client -->
-    <div class="row g-4 align-items-stretch">
-    <!-- Colonne gauche -->
-    <div class="col-md-6">
+    <div class="p-4  rounded shadow-sm mb-4">
+    <div class="row g-4">
+        <!-- Colonne gauche -->
+        <div class="col-md-6">
         <div class="mb-3">
-        <label for="type" class="form-label">Client</label>
-        <select id="type" name="type" class="form-select" required>
-            <option value="Particulier">Particulier</option>
-            <option value="Organisation">Organisation</option>
-        </select>
+            <label for="vehicule" class="form-label">Véhicule</label>
+            <select id="vehicule" name="vehicule" class="form-select" required>
+            <option value="TOYOTA LAND CRUISER">TOYOTA LAND CRUISER</option>
+            <option value="RAV 4">RAV 4</option>
+            </select>
         </div>
         <div class="mb-3">
-        <label for="type" class="form-label">Type</label>
-        <select id="type" name="type" class="form-select" required>
-            <option value="Particulier">Particulier</option>
-            <option value="Organisation">Organisation</option>
-        </select>
+            <label for="client" class="form-label">Client</label>
+            <select id="client" name="client" class="form-select" required>
+            <option value="BARAKA HAMULI">BARAKA HAMULI</option>
+            <option value="HAMULI B.">HAMULI B.</option>
+            </select>
         </div>
         <div class="mb-3">
-        <label for="organisation" class="form-label">Organisation</label>
-        <input type="text" id="organisation" name="organisation" class="form-control" placeholder="Nom de l'organisation" required>
+            <label for="chauffeur" class="form-label">Chauffeur</label>
+            <select id="chauffeur" name="chauffeur" class="form-select" required>
+            <option value="TSHINKWA">TSHINKWA</option>
+            <option value="KASINDI">KASINDI</option>
+            </select>
         </div>
-        
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="col-md-6">
+        <div class="mb-3">
+            <label for="modele" class="form-label">Modèle Véhicule</label>
+            <select id="modele" name="modele" class="form-select" required>
+            <option value="Prado Tx">Prado Tx</option>
+            <option value="Land Cruiser">Land Cruiser</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="datedebut" class="form-label">Date Début</label>
+            <input type="date" id="datedebut" name="datedebut" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="datefin" class="form-label">Date Fin</label>
+            <input type="date" id="datefin" name="datefin" class="form-control" required>
+        </div>
+        </div>
+    </div>
     </div>
 
-    <!-- Colonne droite -->
-    <div class="col-md-6">
-        <div class="mb-3">
-        <label for="type" class="form-label">Véhicule</label>
-        <select id="type" name="veh" class="form-select" required>
-            <option value="Particulier">Prado Tx</option>
-            <option value="Organisation">Land Cruiser</option>
-        </select>
-        </div>
-        <div class="mb-3">
-        <label for="fonction" class="form-label">Date Début</label>
-        <input type="date" id="datedeb" name="datedebut" class="form-control" placeholder="Selectionner la date du début" required>
-        </div>
-        <div class="mb-3">
-        <label for="permis" class="form-label">Date Fin</label>
-        <input type="date" id="datefin" name="datefin" class="form-control" placeholder="Selectionner la date du début" required>
-        </div>
-    </div>
-    </div>
 
    <!-- Boutons centrés avec largeur contrôlée -->
     <div class="d-flex justify-content-center mt-4">

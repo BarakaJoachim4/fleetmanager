@@ -107,13 +107,13 @@
           <span class="material-icons sidebar-icon">person</span>
           <span class="sidebar-text ">Chauffeur</span>
         </a>
-        <a href="contrat.html" class="sidebar-link bg-custom-black-10">
+        <a href="contrat.html" class="sidebar-link ">
           <span class="material-icons sidebar-icon">description</span>
-          <span class="sidebar-text sidebar-active">Contrats</span>
+          <span class="sidebar-text ">Contrats</span>
         </a>
-        <a href="facturation.html" class="sidebar-link">
+        <a href="facturation.html" class="sidebar-link bg-custom-black-10">
           <span class="material-icons sidebar-icon">request_quote</span>
-          <span class="sidebar-text">Facturation</span>
+          <span class="sidebar-text sidebar-active">Facturation</span>
         </a>
         <a href="localisation.html" class="sidebar-link">
           <span class="material-icons sidebar-icon">map</span>
@@ -147,11 +147,11 @@
       <!-- Actions -->
       <div class="p-3 rounded mb-4" style="background-color: #FFEBDE;">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-          <h1 class="fs-1 fw-bold" style="color: #3F3C5C">Contrats</h1>
+          <h1 class="fs-1 fw-bold" style="color: #3F3C5C">Facturation</h1>
 
           <div class="d-flex flex-wrap gap-2 mt-3 mt-md-0">
-            <a href="contrat-add.html" class="btn text-white d-flex align-items-center gap-2" style="background-color: #43425D;">
-              <span class="material-icons">assignment_add</span> Nouveau Contrat
+            <a href="facturation-add.html" class="btn text-white d-flex align-items-center gap-2" style="background-color: #43425D;">
+              <span class="material-icons">assignment_add</span> Nouvelle Facture
             </a>
             <div class="d-flex align-items-center border px-3 py-2 rounded bg-white" style="width: 300px;">
               <span class="material-icons text-secondary">search</span>
@@ -191,60 +191,57 @@
 
       </div>
 
-      <!-- Table  -->
-      <div class="table-responsive bg-white rounded shadow-sm">
-        <table class="table align-middle mb-0">
-          <thead>
-              <tr class="text-uppercase fw-bold" style="background-color: #f78438; color: #4D4F5C; font-size: 1rem;">
-                <th style="padding: 1rem;">VEHICULE</th>
-                <th style="padding: 1rem;">CLIENT</th>
-                <th style="padding: 1rem;">CHAUFFEUR</th>
-                <th style="padding: 1rem;">DATE DEBUT</th>
-                <th style="padding: 1rem;">DATE FIN</th>
-                <th style="padding: 1rem;">STATUT</th>
+      <!-- Table uniformisée -->
+        <div class="table-responsive bg-white rounded shadow-sm">
+          <table class="table align-middle mb-0">
+            <thead style="background-color: #FFEBDE !important;">
+              <tr class="text-uppercase fw-bold" style="color: #4D4F5C; font-size: 1rem;">
+                <th style="padding: 1rem;">NOM CLIENT</th>
+                <th style="padding: 1rem;">DATE</th>
+                <th style="padding: 1rem;">TOTAL</th>
+                <th style="padding: 1rem;">DEVISE</th>
+                <th style="padding: 1rem;">TYPE FACTURE</th>
+                <th style="padding: 1rem;">Status</th>
                 <th class="text-center" style="padding: 1rem;">Action</th>
               </tr>
-          </thead>
-
-
-          <tbody>
-            <tr style="color: #4D4F5C;">
-              <td>TOYOTA LAND CRUISER</td>
-              <td>BARAKA HAMULI</td>
-              <td>CHUBAKA TSHIKWA</td>
-              <td>16-04-2025</td>
-              <td>20-04-2025</td>
-              <td>
-                  <span class="badge bg-danger bg-opacity-75 text-white">Achévé</span>
+            </thead>
+            <tbody>
+              <tr style="color: #4D4F5C;">
+                <td>BARAKA HAMULI JOACHIM</td>
+                <td>16-04-2025</td>
+                <td>100</td>
+                <td>$</td>
+                <td>Facture</td>
+                <td>
+                  <span class="badge bg-success bg-opacity-75 text-white">Payé</span>
                 </td>
-              <td class="text-center">
-                <div class="d-flex justify-content-center gap-2">
-                  <a href="contrat-view.html" title="Voir">
-                    <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">visibility</span>
-                  </a> 
-                  <a href="contrat-edit.html" title="Modifier">
-                    <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">edit</span>
-                  </a>
-                  <a href="#" title="Supprimer" onclick="openDeleteModal(); return false;">
-                    <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">delete</span>
-                  </a>
+                <td class="text-center">
+                  <div class="d-flex justify-content-center gap-2">
+                    <a href="vehicule-view.html" title="Voir">
+                      <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">visibility</span>
+                    </a>
+                    <a href="vehicule-edit.html" title="Modifier">
+                      <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">edit</span>
+                    </a>
+                    <a href="#" title="Supprimer" onclick="openDeleteModal(); return false;">
+                        <span class="material-icons" style="cursor: pointer; color: #4D4F5C;">delete</span>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
 
-
-      <!-- Pagination -->
-      <div class="d-flex justify-content-center mt-4 gap-2">
-        <button class="btn btn-link text-muted">&laquo;</button>
-        <button class="btn btn-primary px-3 py-1">1</button>
-        <button class="btn btn-link text-dark">2</button>
-        <button class="btn btn-link text-dark">3</button>
-        <button class="btn btn-link text-muted">&raquo;</button>
-      </div>
+        <!-- Pagination -->
+        <div class="d-flex justify-content-center mt-4 gap-2">
+          <button class="btn btn-link text-muted">&laquo;</button>
+          <button class="btn btn-primary px-3 py-1">1</button>
+          <button class="btn btn-link text-dark">2</button>
+          <button class="btn btn-link text-dark">3</button>
+          <button class="btn btn-link text-muted">&raquo;</button>
+        </div>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -259,7 +256,7 @@
         <button type="button" class="btn-close" onclick="closeDeleteModal()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="mb-3">Vous voulez vraiment supprimer ce contrat?</p>
+        <p class="mb-3">Vous voulez vraiment supprimer ce facture?</p>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="confirmDelete" id="confirmYes" value="yes">
           <label class="form-check-label" for="confirmYes">Oui</label>
@@ -278,9 +275,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 
 </html>
